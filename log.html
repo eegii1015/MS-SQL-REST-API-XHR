@@ -1,0 +1,51 @@
+<html>
+
+<head></head>
+
+<body>
+    <label>OrderId</label>
+    <input id="inp1" type="text"><br>
+    <label>Payment</label>
+    <input type="text" id="inp2"><br>
+    <Button onclick="cl()">Submit</Button>
+</body>
+<script>
+    function cl() {
+        let date = new Date();
+        let y = date.getFullYear();
+        let m = date.getMonth() + 1;
+        let d = date.getDate();
+        let hour = date.getHours();
+        let mi = date.getMinutes();
+        let sec = date.getSeconds();
+        const sd = "-";
+        const str = y + sd + m + sd + d + " " + hour + ":" + mi + ":" + sec;
+        console.log(str);
+        let id=document.getElementById("inp1").value; 
+        let del = document.getElementById("inp2").value;
+        let jsn = JSON.stringify(
+            {
+                DeliveredDate: str,
+                paymentMethod: del,
+                paidStatus: "yes",
+            }
+        );
+        let loc=window.location.origin;
+        let url=loc.substring(0,loc.length-4)+"8090/"+"api/orders/del/update/"+id;
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("PUT", url);
+
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                console.log(xhr.status);
+                console.log(xhr.responseText);
+            }
+        };
+        xhr.send(jsn);
+    }
+</script>
+
+</html>

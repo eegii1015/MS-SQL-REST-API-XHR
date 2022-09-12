@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>Get order</title>
+    <script src="table.js" defer></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .con1>div:first-child {
+            display: grid;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            justify-content: space-evenly;
+            grid-template-columns: repeat(4, auto);
+            border: 1px solid black;
+        }
+
+        .con1>div:first-child>div:nth-child(n) {
+            padding: 5px 20px 5px 20px;
+            background: gray;
+            width: max-content;
+            border: 0px solid black;
+        }
+
+        body>div:nth-child(1) {
+            width: 70%;
+            border: 0px solid black;
+           
+        }
+        #app{
+            margin-top: 50px;
+        }
+
+        body>div:nth-child(2) {
+            width: 25%;
+            
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="con1">
+            <div>
+                
+                <div onclick="piz()">Пизза</div>
+                <div onclick="sides()">Нэмэлт</div>
+                <div onclick="drinks()">Ундаа</div>
+            </div>
+
+        </div>
+        <div id="app"></div>
+    </div>
+    <div id="or">
+        <table id="orders" border='1'>
+            <tr>
+                <td>id</td>
+                <td>Price</td>
+                <td>Title</td>
+            </tr>
+        </table>
+        <button onclick="insert()">Zahialah</button>
+    </div>
+</body>
+
+</html>
